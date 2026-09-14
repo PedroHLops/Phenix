@@ -1,0 +1,23 @@
+{
+    "name": "phenix/framework",
+    "description": "A full-stack PHP framework with client-side PHP compilation",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": "^8.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Phenix\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Phenix\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": "^8.4",
+        "nikic/php-parser": "^5.6"
+    }
+}
