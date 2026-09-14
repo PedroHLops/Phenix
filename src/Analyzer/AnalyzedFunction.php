@@ -8,7 +8,8 @@ final readonly class AnalyzedFunction
 {
     public function __construct(
         public string $name,
-        public int $parameters,
+        public array $parameters,
+        public ?string $returnType,
         public Type $type,
         public array $bodyNodes,
     ) {

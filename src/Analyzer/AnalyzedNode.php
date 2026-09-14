@@ -11,7 +11,9 @@ final readonly class AnalyzedNode
      */
     public function __construct(
         public string $type,
+        public NodeKind $kind,
         public array $children = [],
+        public ?string $value = null,
     ) {
     }
 }
