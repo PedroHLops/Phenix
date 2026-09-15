@@ -24,7 +24,6 @@ use Phenix\Attributes\Client;
 use Phenix\Attributes\Server;
 use Phenix\Attributes\Shared;
 
-
 // ============================================================
 // 1. IF / ELSE
 // ============================================================
@@ -38,7 +37,6 @@ function checkAge(int $age): string
         return 'Menor de idade';
     }
 }
-
 
 // ============================================================
 // 2. IF / ELSE IF / ELSE
@@ -56,7 +54,6 @@ function classifyAge(int $age): string
     }
 }
 
-
 // ============================================================
 // 3. OPERADORES ARITMÉTICOS
 // ============================================================
@@ -71,7 +68,6 @@ function calculateScore(int $a, int $b): int
     return $sum + $difference + $product;
 }
 
-
 // ============================================================
 // 4. OPERADORES DE COMPARAÇÃO
 // ============================================================
@@ -81,7 +77,6 @@ function compareNumbers(int $a, int $b): bool
 {
     return $a > $b;
 }
-
 
 // ============================================================
 // 5. OPERADORES LÓGICOS
@@ -93,7 +88,6 @@ function canEnter(int $age, bool $active): bool
     return $age >= 18 && $active;
 }
 
-
 // ============================================================
 // 6. NOT
 // ============================================================
@@ -103,7 +97,6 @@ function isInactive(bool $active): bool
 {
     return !$active;
 }
-
 
 // ============================================================
 // 7. CONCATENAÇÃO
@@ -115,7 +108,6 @@ function createMessage(string $name, int $age): string
     return 'Nome: ' . $name . ', idade: ' . $age;
 }
 
-
 // ============================================================
 // 8. CHAMADA DE FUNÇÃO
 // ============================================================
@@ -126,7 +118,6 @@ function normalizeName(string $name): string
     return strtoupper($name);
 }
 
-
 // ============================================================
 // 9. CHAMADA DE FUNÇÃO COM ARGUMENTO
 // ============================================================
@@ -136,7 +127,6 @@ function createGreeting(string $name): string
 {
     return 'Olá, ' . strtoupper($name);
 }
-
 
 // ============================================================
 // 10. VARIÁVEL LOCAL
@@ -150,7 +140,6 @@ function createFullName(string $firstName, string $lastName): string
     return $fullName;
 }
 
-
 // ============================================================
 // 11. MÚLTIPLOS PARÂMETROS
 // ============================================================
@@ -160,7 +149,6 @@ function calculateAverage(int $a, int $b, int $c): int
 {
     return ($a + $b + $c) / 3;
 }
-
 
 // ============================================================
 // 12. IF ANINHADO
@@ -180,7 +168,6 @@ function classifyPerson(int $age): string
     return 'Menor';
 }
 
-
 // ============================================================
 // 13. SERVER
 // ============================================================
@@ -190,7 +177,6 @@ function saveUser(string $name): void
 {
     $user = $name;
 }
-
 
 // ============================================================
 // 14. SERVER COM RETORNO
@@ -202,7 +188,6 @@ function getServerMessage(): string
     return 'Mensagem do servidor';
 }
 
-
 // ============================================================
 // 15. SHARED
 // ============================================================
@@ -213,7 +198,6 @@ function formatUserName(string $name): string
     return strtoupper($name);
 }
 
-
 // ============================================================
 // 16. FUNÇÃO SEM ATRIBUTO
 // ============================================================
@@ -221,7 +205,6 @@ function formatUserName(string $name): string
 function normalFunction(): void
 {
 }
-
 
 // ============================================================
 // 17. BOOLEAN LITERAL
@@ -233,7 +216,6 @@ function isActive(): bool
     return true;
 }
 
-
 // ============================================================
 // 18. INTEGER LITERAL
 // ============================================================
@@ -244,7 +226,6 @@ function getDefaultAge(): int
     return 18;
 }
 
-
 // ============================================================
 // 19. STRING LITERAL
 // ============================================================
@@ -254,7 +235,6 @@ function getDefaultName(): string
 {
     return 'Pedro';
 }
-
 
 // ============================================================
 // 20. EXPRESSÃO COMPLEXA
@@ -269,8 +249,342 @@ function calculateEligibility(int $age, bool $active): bool
 
     return false;
 }
-PHP;
 
+// ============================================================
+// 21. ARRAY DE ELEMENTOS
+// ============================================================
+
+#[Client]
+function getName(array $user): string
+{
+    return $user['name'];
+}
+
+// ============================================================
+// 22. PROPRIEDADES
+// ============================================================
+
+#[Client]
+function getUserName(object $user): string
+{
+    return $user->name;
+}
+
+// ============================================================
+// 23. MÉTODOS
+// ============================================================
+
+#[Client]
+function getUserNameFromMethod(object $user): string
+{
+    return $user->getName();
+}
+
+#[Client]
+function setUserName(object $user, string $name): void
+{
+    $user->setName($name);
+}
+
+// ============================================================
+// 24. BREAK / CONTINUE
+// ============================================================
+
+#[Client]
+function countWithBreak(): void
+{
+    for ($i = 0; $i < 10; $i++) {
+        if ($i === 5) {
+            break;
+        }
+
+        console_log($i);
+    }
+}
+
+#[Client]
+function countWithContinue(): void
+{
+    for ($i = 0; $i < 10; $i++) {
+        if ($i === 5) {
+            continue;
+        }
+
+        console_log($i);
+    }
+}
+
+// ============================================================
+// 25. SWITCH
+// ============================================================
+
+#[Client]
+function classifyStatus(int $status): string
+{
+    switch ($status) {
+        case 1:
+            return 'Ativo';
+
+        case 2:
+            return 'Pendente';
+
+        default:
+            return 'Desconhecido';
+    }
+}
+
+// ============================================================
+// 26. SWITCH COM BREAK
+// ============================================================
+
+#[Client]
+function printStatus(int $status): void
+{
+    switch ($status) {
+        case 1:
+            console_log('Ativo');
+            break;
+
+        case 2:
+            console_log('Pendente');
+            break;
+
+        default:
+            console_log('Desconhecido');
+            break;
+    }
+}
+
+// ============================================================
+// 27. DO WHILE
+// ============================================================
+
+#[Client]
+function countWithDoWhile(): void
+{
+    $i = 0;
+
+    do {
+        console_log($i);
+
+        $i++;
+    } while ($i < 3);
+}
+
+// ============================================================
+// 28. OPERADORES DE INCREMENTO / DECREMENTO
+// ============================================================
+
+#[Client]
+function testIncrementOperators(): void
+{
+    $i = 0;
+
+    $i++;
+    $i--;
+
+    ++$i;
+    --$i;
+}
+
+// ============================================================
+// 29. OPERADORES DE COMPARAÇÃO
+// ============================================================
+
+#[Client]
+function compareAll(int $a, int $b): bool
+{
+    return $a == $b;
+}
+
+#[Client]
+function compareDifferent(int $a, int $b): bool
+{
+    return $a != $b;
+}
+
+#[Client]
+function compareGreaterOrEqual(int $a, int $b): bool
+{
+    return $a >= $b;
+}
+
+#[Client]
+function compareSmallerOrEqual(int $a, int $b): bool
+{
+    return $a <= $b;
+}
+
+// ============================================================
+// 30. OPERADORES LÓGICOS
+// ============================================================
+
+#[Client]
+function testOr(bool $a, bool $b): bool
+{
+    return $a || $b;
+}
+
+#[Client]
+function testNot(bool $active): bool
+{
+    return !$active;
+}
+
+// ============================================================
+// 31. OPERADORES ARITMÉTICOS
+// ============================================================
+
+#[Client]
+function calculateDivision(int $a, int $b): int
+{
+    return $a / $b;
+}
+
+#[Client]
+function calculateSubtraction(int $a, int $b): int
+{
+    return $a - $b;
+}
+
+#[Client]
+function calculateMultiplication(int $a, int $b): int
+{
+    return $a * $b;
+}
+
+// ============================================================
+// 32. ARRAYS
+// ============================================================
+
+#[Client]
+function getFirstName(array $users): string
+{
+    return $users[0];
+}
+
+#[Client]
+function getUserNameByKey(array $user): string
+{
+    return $user['name'];
+}
+
+// ============================================================
+// 33. ARRAY ANINHADO
+// ============================================================
+
+#[Client]
+function getNestedValue(array $user): string
+{
+    return $user['profile']['name'];
+}
+
+// ============================================================
+// 34. PROPRIEDADE + MÉTODO
+// ============================================================
+
+#[Client]
+function getProfileName(object $user): string
+{
+    return $user->profile->name;
+}
+
+#[Client]
+function callNestedMethod(object $user): string
+{
+    return $user->profile->getName();
+}
+
+// ============================================================
+// 35. ATRIBUIÇÕES MÚLTIPLAS
+// ============================================================
+
+#[Client]
+function calculateValues(int $a, int $b): int
+{
+    $sum = $a + $b;
+    $result = $sum * 2;
+
+    return $result;
+}
+
+// ============================================================
+// 36. FUNÇÃO COM VÁRIAS EXPRESSÕES
+// ============================================================
+
+#[Client]
+function processUser(string $name): string
+{
+    $normalized = strtoupper($name);
+
+    console_log($normalized);
+
+    return $normalized;
+}
+
+// ============================================================
+// 37. FUNÇÃO COM CHAMADAS ENCADEADAS
+// ============================================================
+
+#[Client]
+function getFormattedName(object $user): string
+{
+    return strtoupper($user->getName());
+}
+
+// ============================================================
+// 38. RETURN SEM VALOR
+// ============================================================
+
+#[Client]
+function stopProcessing(bool $condition): void
+{
+    if ($condition) {
+        return;
+    }
+
+    console_log('Continuando');
+}
+
+// ============================================================
+// 39. IF COM MÚLTIPLAS EXPRESSÕES
+// ============================================================
+
+#[Client]
+function processAge(int $age): string
+{
+    if ($age >= 18) {
+        console_log('Maior');
+
+        return 'Adulto';
+    }
+
+    console_log('Menor');
+
+    return 'Menor';
+}
+
+// ============================================================
+// 40. FOR COM BREAK E CONTINUE
+// ============================================================
+
+#[Client]
+function complexLoop(): void
+{
+    for ($i = 0; $i < 10; $i++) {
+        if ($i === 2) {
+            continue;
+        }
+
+        if ($i === 8) {
+            break;
+        }
+
+        console_log($i);
+    }
+}
+
+PHP;
 $ast = $parser->parse($code);
 
 $traverser = new NodeTraverser();
