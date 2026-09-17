@@ -18,6 +18,8 @@ use PhpParser\Node\Expr\BinaryOp\GreaterOrEqual;
 use PhpParser\Node\Expr\BinaryOp\Identical;
 use PhpParser\Node\Expr\BinaryOp\Minus;
 use PhpParser\Node\Expr\BinaryOp\Mul;
+use PhpParser\Node\Expr\BinaryOp\NotEqual;
+use PhpParser\Node\Expr\BinaryOp\NotIdentical;
 use PhpParser\Node\Expr\BinaryOp\Plus;
 use PhpParser\Node\Expr\BinaryOp\Smaller;
 use PhpParser\Node\Expr\BinaryOp\SmallerOrEqual;
@@ -151,6 +153,8 @@ final class ExpressionAnalyzer
             PreInc::class === $expression::class => 'PreInc',
             PreDec::class === $expression::class => 'PreDec',
             Assign::class === $expression::class => 'Assign',
+            NotEqual::class === $expression::class => 'NotEqual',
+            NotIdentical::class === $expression::class => 'NotIdentical',
             default => $expression::class
         };
     }
